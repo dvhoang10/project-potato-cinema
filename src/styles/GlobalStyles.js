@@ -53,6 +53,9 @@ export const GlobalStyles = createGlobalStyle`
             font-size: 1rem;
         }
     }
+    .logo {
+        user-select: none;
+    }
     @keyframes fade-in {
         0% {
             opacity: 0;

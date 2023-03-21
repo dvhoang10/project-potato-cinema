@@ -1,46 +1,33 @@
 import { Input, message } from "antd";
+import ErrorComponent from "components/common/ErrorComponent";
 import { useFormik } from "formik";
 import React, { useEffect } from "react";
+import { withErrorBoundary } from "react-error-boundary";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { localStoreService } from "services/localStoreService";
 import { fecthUserLogin } from "store/user/userHandlers";
 import styled from "styled-components";
 import { AntdForm, AntdFormItem } from "styles/AntDesign";
 import { Breakpoints } from "styles/Breakpoint";
-import { StyledButton } from "styles/Styles";
-import { CYBERSOFT_TOKEN, CYBERSOFT_URL, POTATO } from "utils/config";
+import { StyledBox, StyledButton, StyledLogo } from "styles/Styles";
+import { POTATO, USER_LOGIN } from "utils/config";
 
 const LoginPageStyles = {
-  Box: styled.div`
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-      url("images/bg.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: fade-in 1s ease-in-out;
-  `,
   Form: styled(AntdForm)`
     width: 600px;
     margin: 1rem;
     padding: 2rem;
     background-color: rgba(0, 0, 0, 0.75);
     border-radius: 1rem;
+    label {
+      width: 200px;
+    }
   `,
   Center: styled.div`
     display: flex;
     justify-content: center;
     margin-bottom: 1.5rem;
-  `,
-  Logo: styled.h3`
-    font-family: "Khand", sans-serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--color-red);
-    text-transform: uppercase;
-    display: inline-block;
   `,
   Text: styled.span`
     color: var(--light);
@@ -56,9 +43,9 @@ const LoginPageStyles = {
   `,
 };
 
-export default function LoginPage() {
+function LoginPage() {
   useEffect(() => {
-    document.title = `Log in - ${POTATO}`;
+    document.title = `Login - ${POTATO}`;
   }, []);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -78,17 +65,18 @@ export default function LoginPage() {
       }
     },
   });
+  if (localStoreService.getItemLocal(USER_LOGIN)) {
+    return <Navigate to="/"></Navigate>;
+  }
   return (
-    <LoginPageStyles.Box>
+    <StyledBox>
       <LoginPageStyles.Form
         onFinish={formik.handleSubmit}
         labelCol={{ span: 6 }}
       >
         <LoginPageStyles.Center>
           <Link to="/">
-            <LoginPageStyles.Logo className="logo">
-              {POTATO}
-            </LoginPageStyles.Logo>
+            <StyledLogo className="logo">{POTATO}</StyledLogo>
           </Link>
         </LoginPageStyles.Center>
         <AntdFormItem
@@ -112,7 +100,7 @@ export default function LoginPage() {
         </AntdFormItem>
         <LoginPageStyles.Center>
           <LoginPageStyles.Text>
-            Don't have an account yet?
+            Don't have an account?
             <Link to="/signup">Sign Up</Link>
           </LoginPageStyles.Text>
         </LoginPageStyles.Center>
@@ -120,6 +108,10 @@ export default function LoginPage() {
           Login
         </StyledButton>
       </LoginPageStyles.Form>
-    </LoginPageStyles.Box>
+    </StyledBox>
   );
 }
+
+export default withErrorBoundary(LoginPage, {
+  FallbackComponent: ErrorComponent,
+});

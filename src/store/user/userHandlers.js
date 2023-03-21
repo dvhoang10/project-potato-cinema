@@ -8,3 +8,11 @@ export const fecthUserLogin = createAsyncThunk(
     return result.data.content;
   }
 );
+
+export const registerUser = createAsyncThunk(
+  "userSlice/registerUser",
+  async (data) => {
+    const result = await userService.userRegister(data);
+    return result;
+  }
+);

@@ -1,5 +1,26 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Breakpoints } from "./Breakpoint";
+
+export const StyledBox = styled.div`
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fade-in 1s ease-in-out;
+`;
+
+export const StyledLogo = styled.h3`
+  font-family: "Khand", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-red);
+  text-transform: uppercase;
+  display: inline-block;
+`;
 
 export const StyledButton = styled.button`
   background: var(--color-red);

@@ -6,6 +6,6 @@ export const localStoreService = {
     if (localStorage.hasOwnProperty(key)) {
       return JSON.parse(localStorage.getItem(key));
     }
-    return null;
+    return "";
   },
 };

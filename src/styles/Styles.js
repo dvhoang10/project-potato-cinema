@@ -14,7 +14,7 @@ export const StyledBox = styled.div`
 `;
 
 export const StyledLogo = styled.h3`
-  font-family: "Khand", sans-serif;
+  font-family: "Changa", sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--color-red);

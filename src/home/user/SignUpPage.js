@@ -1,6 +1,8 @@
 import { Input, message } from "antd";
+import ErrorComponent from "components/common/ErrorComponent";
 import { useFormik } from "formik";
 import React, { useEffect } from "react";
+import { withErrorBoundary } from "react-error-boundary";
 import { useDispatch } from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { localStoreService } from "services/localStoreService";
@@ -182,4 +184,6 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default withErrorBoundary(SignUpPage, {
+  FallbackComponent: ErrorComponent,
+});

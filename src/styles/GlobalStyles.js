@@ -40,6 +40,7 @@ export const GlobalStyles = createGlobalStyle`
         :hover{
             color: var(--color-red);
         }
+        text-decoration: none;
     }
     h1, h2, h3, h4{
         margin: 0;

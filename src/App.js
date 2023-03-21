@@ -1,3 +1,4 @@
+import ModalVideoPlayTrailer from "components/modalVideo/ModalVideoPlayTrailer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Admin from "routes/Admin";
 import Home from "routes/Home";
@@ -9,6 +10,7 @@ function App() {
         <Route path="*" element={<Home></Home>}></Route>
         <Route path="/admin" element={<Admin></Admin>}></Route>
       </Routes>
+      <ModalVideoPlayTrailer></ModalVideoPlayTrailer>
     </BrowserRouter>
   );
 }

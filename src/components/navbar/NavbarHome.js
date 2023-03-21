@@ -78,7 +78,7 @@ const NavStyles = {
       width: 100%;
       flex-direction: column;
       justify-content: flex-start;
-      background-color: var(--color-nav);
+      background-color: rgba(0, 0, 0, 0.75);
       position: absolute;
       top: -100%;
       z-index: 999;
@@ -93,12 +93,11 @@ const NavStyles = {
     padding: 0.5rem 1.25rem;
     margin-right: 0.25rem;
     color: var(--text-light);
-    border-radius: 4px;
-    transition: all 1s ease-in-out;
+    transition: all 0.5s ease-in-out;
     font-family: "Poppins", sans-serif;
     :hover {
       color: var(--text-light);
-      background-color: var(--rgba-blue-magenta);
+      transform: scale(1.1);
     }
     @media (max-width: 1024px) {
       padding: 0.75rem;
@@ -111,6 +110,7 @@ const NavStyles = {
       border-radius: 0;
       :hover {
         background-color: unset;
+        transform: unset;
       }
     }
   `,
@@ -122,7 +122,7 @@ const Dropdown = {
     user-select: none;
     transition: all 0.5s ease-in-out;
     background-color: var(--color-red);
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 1rem;
     line-height: 1.75rem;
     font-family: "Poppins", sans-serif;
@@ -152,7 +152,7 @@ const Dropdown = {
   Content: styled.div`
     display: none;
     position: absolute;
-    background-color: var(--rgba-blue-magenta);
+    background-color: rgba(0, 0, 0, 0.75);
     box-shadow: var(--shadow-dark);
     z-index: 100;
     border-radius: 8px;
@@ -177,7 +177,7 @@ const Dropdown = {
     padding: 0.5rem 0;
     margin: 0.5rem;
     color: var(--text-light);
-    border-radius: 4px;
+    border-radius: 8px;
     font-family: "Poppins", sans-serif;
     width: 100%;
     margin: 0.5rem 0;
@@ -193,7 +193,7 @@ const Dropdown = {
       margin: 0;
       text-align: left;
       border-radius: 0;
-      background-color: var(--color-nav);
+      background-color: rgba(0, 0, 0, 0.75);
       :hover {
         border: 0;
       }

@@ -33,7 +33,7 @@ export const GlobalStyles = createGlobalStyle`
         font-size: 16px;
         height: inherit;
         color: var(--text-light);
-        font-family: 'Khand', sans-serif;
+        font-family: 'Poppins', sans-serif;
     }
     a{
         color: var(--text-light);

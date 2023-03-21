@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { Breakpoints } from "./Breakpoint";
 
 export const GlobalStyles = createGlobalStyle`
     :root{
@@ -40,4 +41,25 @@ export const GlobalStyles = createGlobalStyle`
             color: var(--color-red);
         }
     }
+    h1, h2, h3, h4{
+        margin: 0;
+        color: var(--text-light);
+    }
+    p, span {
+        margin: 0;
+        font-size: 1rem;
+        font-family: 'Poppins', sans-serif;
+        ${Breakpoints.md}{
+            font-size: 1rem;
+        }
+    }
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+            transform: none;
+        }
+    } 
 `;

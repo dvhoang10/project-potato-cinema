@@ -8,12 +8,13 @@ import { useDispatch } from "react-redux";
 import { setStatus } from "store/modelVideo/modalVideoSlice";
 import getVideoId from "get-video-id";
 import LazyLoad from "react-lazy-load";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
 
 const MovieCardV1 = ({ movie }) => {
   const dispatch = useDispatch();
   return (
     <MovieCardV1Styles.Card>
-      <LazyLoad>
+      <LazyLoadComponent>
         <MovieCardV1Styles.Rounded>
           <MovieCardV1Styles.Content>
             {movie.hinhAnh !== "" ? (
@@ -65,7 +66,7 @@ const MovieCardV1 = ({ movie }) => {
             )}
           </MovieCardV1Styles.Info>
         </MovieCardV1Styles.Rounded>
-      </LazyLoad>
+      </LazyLoadComponent>
     </MovieCardV1Styles.Card>
   );
 };

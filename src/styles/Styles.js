@@ -62,10 +62,6 @@ export const Container = styled.div`
   max-width: 1440px;
   padding: 1rem;
   animation: fade-in 1s ease-in-out 0s both;
-  @media (min-width: 1024px) {
-    padding: 2rem;
-    margin: 0 2.75rem;
-  }
 `;
 
 export const Heading = styled.h2`

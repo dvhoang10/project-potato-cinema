@@ -108,8 +108,8 @@ const NavStyles = {
       margin: 0;
       border-bottom: var(--border);
       border-radius: 0;
+      background-color: black;
       :hover {
-        background-color: unset;
         transform: unset;
       }
     }
@@ -136,6 +136,7 @@ const Dropdown = {
       max-width: unset;
       border-radius: 0;
       padding: 0;
+      background-color: unset;
     }
   `,
   Block: styled.span`
@@ -144,7 +145,7 @@ const Dropdown = {
     display: inline-block;
     cursor: pointer;
     @media (max-width: 900px) {
-      background-color: var(--rgba-blue-magenta);
+      background-color: var(--color-primary);
       border: none;
       padding: 1rem 1.5rem;
     }
@@ -152,7 +153,6 @@ const Dropdown = {
   Content: styled.div`
     display: none;
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.75);
     box-shadow: var(--shadow-dark);
     z-index: 100;
     border-radius: 8px;
@@ -160,6 +160,7 @@ const Dropdown = {
     transform: translateX(-50%);
     padding: 0 0.5rem;
     width: 150px;
+    background-color: var(--color-bg);
     @media (max-width: 900px) {
       display: block;
       position: unset;
@@ -193,7 +194,7 @@ const Dropdown = {
       margin: 0;
       text-align: left;
       border-radius: 0;
-      background-color: rgba(0, 0, 0, 0.75);
+      background-color: black;
       :hover {
         border: 0;
       }

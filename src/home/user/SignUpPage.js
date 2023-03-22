@@ -18,7 +18,7 @@ const SignUpPageStyles = {
     width: 600px;
     margin: 1rem;
     padding: 2rem;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: var(--color-bg);
     border-radius: 1rem;
     label {
       width: 210px;

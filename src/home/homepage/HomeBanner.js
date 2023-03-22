@@ -49,7 +49,7 @@ const HomeBannerStyles = {
     margin-bottom: 1rem;
   `,
   Background: styled.div`
-    background: rgba(0, 0, 0, 0.75);
+    background: var(--color-bg);
     padding: 1rem;
     border-radius: 8px;
   `,

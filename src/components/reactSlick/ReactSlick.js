@@ -1,4 +1,5 @@
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import Slider from "react-slick";
 import styled from "styled-components";
 
 const StyledArrow = styled.div`
@@ -14,7 +15,7 @@ const StyledArrow = styled.div`
   outline: none;
   top: ${(props) => (props.center ? "calc(50% - 2.125rem)" : "50%")};
   margin-top: -24px;
-  background: rgba(0, 0, 0, 0.75);
+  background: var(--color-bg);
   z-index: 10;
 `;
 
@@ -51,3 +52,14 @@ export const RSPrevArrow = (props) => {
     </StyledPrevArrow>
   );
 };
+
+export const ReactSlick = styled(Slider)`
+  .slick-list {
+    margin: 1rem 0;
+    animation: fade-in 1s ease-in-out;
+  }
+  .slick-slide {
+    box-sizing: border-box;
+    padding: 0 0.25rem;
+  }
+`;

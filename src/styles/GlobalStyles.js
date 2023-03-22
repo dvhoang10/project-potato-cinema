@@ -5,6 +5,7 @@ export const GlobalStyles = createGlobalStyle`
     :root{
         --color-primary: #423F57;
         --color-secondary: rgba(51, 51, 51, 0.7);
+        --color-bg: rgba(0, 0, 0, 0.75);
         --color-light-blue: #a5abbd;
         --color-nav: rgba(33, 33, 33, 0.98);
         --color-footer: rgba(19, 18, 20, 0.98);
@@ -66,4 +67,22 @@ export const GlobalStyles = createGlobalStyle`
             transform: none;
         }
     } 
+    @keyframes close {
+        0% {
+            opacity: 0;
+            transform: rotate(0deg);
+        }
+        100% {
+            opacity: 1;
+            transform: rotate(45deg);
+        }
+    }
+    @keyframes loading {
+        0% {
+            background-position: 100% 50%;
+        }    
+        100% {
+            background-position: 0 50%;
+        }   
+    }
 `;

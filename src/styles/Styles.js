@@ -55,3 +55,40 @@ export const StyledButton = styled.button`
     transform: translate3d(300%, 0, 0) rotate(35deg);
   }
 `;
+
+export const Container = styled.div`
+  min-height: 100vh;
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 1rem;
+  animation: fade-in 1s ease-in-out 0s both;
+  @media (min-width: 1024px) {
+    padding: 2rem;
+    margin: 0 2.75rem;
+  }
+`;
+
+export const Heading = styled.h2`
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  color: ${(props) => (props.admin ? "var(--text-light)" : "var(--color-red)")};
+  padding-bottom: 1rem;
+  ${Breakpoints.md} {
+    font-size: 2rem;
+  }
+`;
+
+export const CardHeight = styled.div`
+  height: calc(((100vw - 5rem) / 2) * 1.5);
+  @media (min-width: 768px) {
+    height: calc(((100vw - 6rem) / 3) * 1.5);
+  }
+  @media (min-width: 1024px) {
+    height: calc(((100vw - 7rem) / 4) * 1.5);
+  }
+  @media (min-width: 1440px) {
+    height: calc(((1440px - 8rem) / 5) * 1.5);
+  }
+`;

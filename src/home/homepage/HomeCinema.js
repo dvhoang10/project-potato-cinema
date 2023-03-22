@@ -24,7 +24,7 @@ const HomeCinema = () => {
   return (
     <ReactSlick {...settings}>
       {CinemaList.map((cinema) => (
-        <Link href={cinema.url} target="_blank" key={cinema.name}>
+        <Link to={cinema.url} target="_blank" key={cinema.name}>
           <LazyLoadComponent>
             <HomeCinemaStyles.Logo
               src={cinema.src}

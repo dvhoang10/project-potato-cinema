@@ -1,3 +1,5 @@
+export const AUTHOR = "dvhoang10";
+export const AUTHOR_URL = "https://github.com/dvhoang10";
 export const POTATO = "Potato Cinema";
 export const CYBERSOFT_URL = process.env.REACT_APP_CYBERSOFT_URL;
 export const CYBERSOFT_TOKEN = process.env.REACT_APP_CYBERSOFT_TOKEN;

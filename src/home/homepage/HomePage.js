@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Container, Heading } from "styles/Styles";
 import { POTATO } from "utils/config";
 import HomeBanner from "./HomeBanner";
+import HomeCinema from "./HomeCinema";
 import HomeMovies from "./HomeMovies";
 
 const HomePage = () => {
@@ -20,6 +21,8 @@ const HomePage = () => {
         <HomeMovies movies={nowShowing}></HomeMovies>
         <Heading>Coming Soon</Heading>
         <HomeMovies movies={comingSoon}></HomeMovies>
+        <Heading>Partner</Heading>
+        <HomeCinema></HomeCinema>
       </Container>
     </>
   );

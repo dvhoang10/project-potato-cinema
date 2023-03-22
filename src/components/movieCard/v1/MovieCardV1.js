@@ -7,7 +7,6 @@ import { FaPlay } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { setStatus } from "store/modelVideo/modalVideoSlice";
 import getVideoId from "get-video-id";
-import LazyLoad from "react-lazy-load";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 
 const MovieCardV1 = ({ movie }) => {

@@ -103,12 +103,10 @@ export const StyledLink = styled(Link)`
   justify-content: center;
   align-items: center;
   color: #fff;
-  transition: all 0.5 ease-in-out;
+  transition: all 0.5s ease-in-out;
   background: var(--color-red);
-  &:hover {
-    color: #fff;
-  }
   ${Info}:hover & {
     visibility: visible;
+    color: #fff;
   }
 `;

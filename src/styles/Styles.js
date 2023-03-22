@@ -70,7 +70,7 @@ export const Heading = styled.h2`
   text-align: center;
   text-transform: uppercase;
   color: ${(props) => (props.admin ? "var(--text-light)" : "var(--color-red)")};
-  padding-bottom: 1rem;
+  padding: 1rem 0;
   ${Breakpoints.md} {
     font-size: 2rem;
   }

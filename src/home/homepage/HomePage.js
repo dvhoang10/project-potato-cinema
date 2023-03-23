@@ -18,9 +18,9 @@ const HomePage = () => {
       <HomeBanner></HomeBanner>
       <Container>
         <Heading>Now showing</Heading>
-        <HomeMovies movies={nowShowing}></HomeMovies>
+        <HomeMovies movies={nowShowing.slice(0, 8)}></HomeMovies>
         <Heading>Coming Soon</Heading>
-        <HomeMovies movies={comingSoon}></HomeMovies>
+        <HomeMovies movies={comingSoon.slice(0, 8)}></HomeMovies>
         <Heading>Partner</Heading>
         <HomeCinema></HomeCinema>
       </Container>

@@ -12,10 +12,10 @@ import MovieCardV2 from "components/movieCard/v2/MovieCardV2";
 
 const NowShowingPage = () => {
   const dispatch = useDispatch();
-  const { nowShowing } = useSelector((state) => state.movie);
+  const { comingSoon } = useSelector((state) => state.movie);
   const { loading } = useSelector((state) => state.loading);
   useEffect(() => {
-    document.title = `Now showing`;
+    document.title = `Coming soon`;
   }, []);
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +34,7 @@ const NowShowingPage = () => {
         <LoadingPageV1></LoadingPageV1>
       ) : (
         <GridCardV1>
-          {nowShowing.map((movie, index) => (
+          {comingSoon.map((movie, index) => (
             <MovieCardV1 movie={movie} key={index}></MovieCardV1>
           ))}
         </GridCardV1>
@@ -43,7 +43,7 @@ const NowShowingPage = () => {
         <LoadingPageV2></LoadingPageV2>
       ) : (
         <GridCardV2>
-          {nowShowing.map((movie, index) => (
+          {comingSoon.map((movie, index) => (
             <MovieCardV2 movie={movie} key={index}></MovieCardV2>
           ))}
         </GridCardV2>

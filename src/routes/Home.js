@@ -1,5 +1,6 @@
 import NavbarHome from "components/navbar/NavbarHome";
 import HomePage from "home/homepage/HomePage";
+import ComingSoonPage from "home/movie/ComingSoonPage";
 import NowShowingPage from "home/movie/NowShowingPage";
 import LoginPage from "home/user/LoginPage";
 import SignUpPage from "home/user/SignUpPage";
@@ -16,6 +17,10 @@ export default function Home() {
         <Route
           path="/now-showing"
           element={<NowShowingPage></NowShowingPage>}
+        ></Route>
+        <Route
+          path="/coming-soon"
+          element={<ComingSoonPage></ComingSoonPage>}
         ></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>

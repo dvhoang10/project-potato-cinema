@@ -11,3 +11,20 @@ export const getActorsList = createAsyncThunk(
     return results.data;
   }
 );
+
+export const getDetailsPerson = createAsyncThunk(
+  "peopleSlice/getDetailsPerson",
+  async (id) => {
+    const person = await tmdbServices.getTMDB(
+      `person/${id}?api_key=${TMDB_KEY}&language=en-US`
+    );
+    const acting = await tmdbServices.getTMDB(
+      `person/${id}/movie_credits?api_key=${TMDB_KEY}&language=en-US`
+    );
+    const results = {
+      person: person.data,
+      acting: acting.data.cast,
+    };
+    return results;
+  }
+);

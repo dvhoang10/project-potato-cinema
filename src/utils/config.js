@@ -11,6 +11,8 @@ export const TMDB_URL = "https://api.themoviedb.org/3/";
 export const TMDB_KEY = process.env.REACT_APP_TMDB_KEY;
 export const TMDB_IMG_PERSON_URL =
   "https://www.themoviedb.org/t/p/w600_and_h900_bestv2";
+export const TMDB_IMG_POSTER_URL =
+  "https://www.themoviedb.org/t/p/w300_and_h450_bestv2";
 export const NavBarLink = [
   {
     navLink: true,

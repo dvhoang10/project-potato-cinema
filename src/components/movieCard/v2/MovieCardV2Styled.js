@@ -37,7 +37,8 @@ export const Poster = styled.img`
 export const Content = styled.div`
   padding: 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  row-gap: 1rem;
   flex-direction: column;
 `;
 
@@ -61,7 +62,7 @@ export const ReleaseDate = styled.span`
   font-style: italic;
   font-size: 0.75rem;
   @media (min-width: 1024px) {
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
 `;
 

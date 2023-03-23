@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import { withErrorBoundary } from "react-error-boundary";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { setLoading, unSetLoading } from "store/loading/loadingSlice";
 import { getActorsList } from "store/people/peopleHandlers";
 import styled from "styled-components";
@@ -38,7 +38,7 @@ const PeoplePageStyles = {
     display: flex;
     align-items: center;
     justify-content: center;
-    visibility: ${(props) => (props.display ? "hidden" : "visible")};
+    visibility: ${(props) => props.display};
   `,
   Name: styled.span`
     overflow: hidden;
@@ -71,11 +71,12 @@ const PeoplePage = () => {
         dispatch(unSetLoading());
       } catch (error) {
         console.log("🚀 ~ error:", error);
+        navigate("/people");
         dispatch(unSetLoading());
       }
     };
     fetchData();
-  }, [dispatch, page]);
+  }, [dispatch, page, navigate]);
   return (
     <Container>
       <Heading>Popular people</Heading>
@@ -86,10 +87,7 @@ const PeoplePage = () => {
           <GridCardV1 grid>
             {actor.map((person, index) => (
               <Link
-                to={`/person/${person.name
-                  .toLowerCase()
-                  .split(" ")
-                  .join("-")}-${person.id}`}
+                to={`/person/${person.id}`}
                 target="_parent"
                 key={index}
                 id="person"
@@ -109,7 +107,9 @@ const PeoplePage = () => {
                       />
                       <PeoplePageStyles.Content
                         id="person-name"
-                        display={person.profile_path === null}
+                        display={
+                          person.profile_path === null ? "hidden" : "visible"
+                        }
                       >
                         <PeoplePageStyles.Name>
                           {person.name}

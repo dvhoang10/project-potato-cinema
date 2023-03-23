@@ -46,7 +46,7 @@ const settings = {
   autoplay: true,
   speed: 500,
   autoplaySpeed: 5000,
-  pauseOnHover: true,
+  swipe: false,
   responsive: [
     {
       breakpoint: 1024,

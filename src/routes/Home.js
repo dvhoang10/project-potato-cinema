@@ -2,6 +2,7 @@ import NavbarHome from "components/navbar/NavbarHome";
 import HomePage from "home/homepage/HomePage";
 import ComingSoonPage from "home/movie/ComingSoonPage";
 import NowShowingPage from "home/movie/NowShowingPage";
+import PeoplePage from "home/people/PeoplePage";
 import LoginPage from "home/user/LoginPage";
 import SignUpPage from "home/user/SignUpPage";
 import React from "react";
@@ -22,6 +23,8 @@ export default function Home() {
           path="/coming-soon"
           element={<ComingSoonPage></ComingSoonPage>}
         ></Route>
+        <Route path="/people" element={<PeoplePage></PeoplePage>}></Route>
+        <Route path="/people/:page" element={<PeoplePage></PeoplePage>}></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
       </Routes>

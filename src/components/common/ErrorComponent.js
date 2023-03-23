@@ -1,11 +1,15 @@
 import React from "react";
+import styled from "styled-components";
+
+const ErrorComponentStyles = styled.div`
+  padding: 1.25rem;
+  color: var(--color-red);
+  background: var(--color-bg);
+  border-radius: 0.5rem;
+`;
 
 const ErrorComponent = () => {
-  return (
-    <div className="p-5 text-red-500 bg-red-100 rounded-lg">
-      Component is error
-    </div>
-  );
+  return <ErrorComponentStyles>Component is error</ErrorComponentStyles>;
 };
 
 export default ErrorComponent;

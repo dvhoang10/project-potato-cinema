@@ -14,7 +14,7 @@ const MovieCardV2 = ({ movie }) => {
     <MovieCardV2Styles.Card>
       <LazyLoadComponent>
         <MovieCardV2Styles.Wrapper>
-          <Link to={`/movie/${movie.biDanh}-${movie.maPhim}/`} target="_top">
+          <Link to={`/movie/${movie.maPhim}`} target="_top">
             <MovieCardV2Styles.Poster
               src={movie.hinhAnh !== "" ? movie.hinhAnh : "images/no-image.svg"}
               alt={movie.tenPhim}

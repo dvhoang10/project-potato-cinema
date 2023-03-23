@@ -1,5 +1,4 @@
 import { getMoviesList } from "store/movie/movieHandlers";
-import { getDetailsPerson } from "store/people/peopleHandlers";
 
 const { createSlice } = require("@reduxjs/toolkit");
 

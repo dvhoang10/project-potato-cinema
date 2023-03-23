@@ -3,6 +3,7 @@ import { RSNextArrow, RSPrevArrow } from "components/reactSlick/ReactSlick";
 import getVideoId from "get-video-id";
 import React from "react";
 import { withErrorBoundary } from "react-error-boundary";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
@@ -95,34 +96,36 @@ const HomeBanner = () => {
   return (
     <HomeBannerStyles.Slider {...settings}>
       {BannerList.map((banner) => (
-        <HomeBannerStyles.Box key={banner.id}>
-          <Link to={banner.link}>
-            <HomeBannerStyles.Backdrop backdrop={banner.backdrop} />
-          </Link>
-          <HomeBannerStyles.Content>
-            <HomeBannerStyles.Background>
-              <HomeBannerStyles.Name>{banner.name}</HomeBannerStyles.Name>
-              <HomeBannerStyles.Tagline>
-                {banner.tagline}
-              </HomeBannerStyles.Tagline>
-              <HomeBannerStyles.Button
-                bg="var(--color-red)"
-                onClick={() => {
-                  dispatch(
-                    setStatus({
-                      isOpen: true,
-                      videoId: getVideoId(banner.trailer).id,
-                    })
-                  );
-                }}
-              >
-                <HomeBannerStyles.PlayTrailer>
-                  WATCH TRAILER
-                </HomeBannerStyles.PlayTrailer>
-              </HomeBannerStyles.Button>
-            </HomeBannerStyles.Background>
-          </HomeBannerStyles.Content>
-        </HomeBannerStyles.Box>
+        <LazyLoadComponent key={banner.id}>
+          <HomeBannerStyles.Box>
+            <Link to={banner.link}>
+              <HomeBannerStyles.Backdrop backdrop={banner.backdrop} />
+            </Link>
+            <HomeBannerStyles.Content>
+              <HomeBannerStyles.Background>
+                <HomeBannerStyles.Name>{banner.name}</HomeBannerStyles.Name>
+                <HomeBannerStyles.Tagline>
+                  {banner.tagline}
+                </HomeBannerStyles.Tagline>
+                <HomeBannerStyles.Button
+                  bg="var(--color-red)"
+                  onClick={() => {
+                    dispatch(
+                      setStatus({
+                        isOpen: true,
+                        videoId: getVideoId(banner.trailer).id,
+                      })
+                    );
+                  }}
+                >
+                  <HomeBannerStyles.PlayTrailer>
+                    WATCH TRAILER
+                  </HomeBannerStyles.PlayTrailer>
+                </HomeBannerStyles.Button>
+              </HomeBannerStyles.Background>
+            </HomeBannerStyles.Content>
+          </HomeBannerStyles.Box>
+        </LazyLoadComponent>
       ))}
     </HomeBannerStyles.Slider>
   );

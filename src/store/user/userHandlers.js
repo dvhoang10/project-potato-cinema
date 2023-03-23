@@ -16,3 +16,15 @@ export const registerUser = createAsyncThunk(
     return result;
   }
 );
+
+export const getUserInfo = createAsyncThunk(
+  "userSlice/getUserInfo",
+  async () => {
+    const result = await userService.userInfo();
+    console.log("🚀 ~ result:", result);
+    return {
+      accountInfo: result.data.content,
+      ticket: result.data.content.thongTinDatVe.reverse(),
+    };
+  }
+);

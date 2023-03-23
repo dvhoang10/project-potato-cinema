@@ -50,14 +50,14 @@ const MovieCardV1 = ({ movie }) => {
             </MovieCardV1Styles.Flex>
             {movie.dangChieu ? (
               <MovieCardV1Styles.StyledLink
-                to={`/movie/${movie.biDanh}-${movie.maPhim}/`}
+                to={`/movie/${movie.maPhim}`}
                 target="_top"
               >
                 GET TICKETS
               </MovieCardV1Styles.StyledLink>
             ) : (
               <MovieCardV1Styles.StyledLink
-                to={`/movie/${movie.biDanh}-${movie.maPhim}/`}
+                to={`/movie/${movie.maPhim}`}
                 target="_top"
               >
                 MORE INFO

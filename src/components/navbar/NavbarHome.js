@@ -256,7 +256,7 @@ const NavbarHome = () => {
         <DropdownUser>{user.taiKhoan}</DropdownUser>
         <Dropdown.Content className="dropdown-content">
           {renderLink({ path: "/profile", name: "Profile" })}
-          {renderLink({ path: "/history", name: "Booking History" })}
+          {renderLink({ path: "/booking-history", name: "Booking History" })}
           {user.maLoaiNguoiDung === "QuanTri" ? (
             <>{renderLink({ path: "/admin", name: "Dashboard" })}</>
           ) : (

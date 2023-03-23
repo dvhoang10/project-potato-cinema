@@ -1,5 +1,6 @@
 import Footer from "components/footer/Footer";
 import ModalVideoPlayTrailer from "components/modalVideo/ModalVideoPlayTrailer";
+import dayjs from "dayjs";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Admin from "routes/Admin";
 import Home from "routes/Home";

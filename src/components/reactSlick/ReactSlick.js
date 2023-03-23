@@ -60,6 +60,6 @@ export const ReactSlick = styled(Slider)`
   }
   .slick-slide {
     box-sizing: border-box;
-    padding: 0 0.25rem;
+    padding: 0 0.5rem;
   }
 `;

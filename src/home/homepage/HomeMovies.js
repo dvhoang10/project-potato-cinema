@@ -11,22 +11,17 @@ import {
   RSNextArrow,
   RSPrevArrow,
 } from "components/reactSlick/ReactSlick";
-import { setLoading, unSetLoading } from "store/loading/loadingSlice";
-import LoadingCardV1 from "components/loading/LoadingCardV1";
+import LoadingCardV1 from "components/loading/v1/LoadingCardV1";
 
 const HomeMovies = ({ movies }) => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.loading);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        dispatch(setLoading());
         await dispatch(getMoviesList({ groupId: GROUP_ID_MOVIE })).unwrap();
-        dispatch(unSetLoading());
       } catch (error) {
         console.log("🚀 ~ error:", error);
-        dispatch(setLoading());
       }
     };
     fetchData();

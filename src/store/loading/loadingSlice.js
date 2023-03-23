@@ -1,9 +1,11 @@
+import { getMoviesList } from "store/movie/movieHandlers";
+
 const { createSlice } = require("@reduxjs/toolkit");
 
 const loadingSlice = createSlice({
   name: "loadingSlice",
   initialState: {
-    loading: true,
+    loading: false,
   },
   reducers: {
     setLoading: (state) => ({
@@ -14,6 +16,18 @@ const loadingSlice = createSlice({
       ...state,
       loading: false,
     }),
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getMoviesList.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getMoviesList.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(getMoviesList.rejected, (state) => {
+        state.loading = true;
+      });
   },
 });
 

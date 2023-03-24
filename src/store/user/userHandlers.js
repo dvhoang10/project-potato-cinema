@@ -19,8 +19,8 @@ export const registerUser = createAsyncThunk(
 
 export const getUserInfo = createAsyncThunk(
   "userSlice/getUserInfo",
-  async () => {
-    const result = await userService.userInfo();
+  async (data) => {
+    const result = await userService.userInfo(data);
     return {
       accountInfo: result.data.content,
       ticket: result.data.content.thongTinDatVe.reverse(),
@@ -31,7 +31,10 @@ export const getUserInfo = createAsyncThunk(
 export const updateUserInfo = createAsyncThunk(
   "userSlice/updateUserInfo",
   async (data) => {
-    await userService.userUpdate(data);
-    return data;
+    const result = await userService.userUpdate(data);
+    return {
+      accountInfo: result.data.content,
+      data,
+    };
   }
 );

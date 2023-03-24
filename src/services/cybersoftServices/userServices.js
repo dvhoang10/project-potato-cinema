@@ -7,8 +7,11 @@ export const userService = {
   userRegister: (data) => {
     return httpCybersoftServices.post("/api/QuanLyNguoiDung/DangKy", data);
   },
-  userInfo: () => {
-    return httpCybersoftServices.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`);
+  userInfo: (data) => {
+    return httpCybersoftServices.post(
+      // `/api/QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${data}`
+      `/api/QuanLyNguoiDung/ThongTinTaiKhoan`
+    );
   },
   userUpdate: (data) => {
     return httpCybersoftServices.put(

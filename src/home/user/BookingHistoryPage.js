@@ -62,6 +62,7 @@ const BookingHistoryPage = () => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.loading);
   const { ticket } = useSelector((state) => state.user);
+  const userLogin = localStoreService.getItemLocal(USER_LOGIN);
   useEffect(() => {
     document.title = "Booking history";
   }, []);
@@ -69,7 +70,7 @@ const BookingHistoryPage = () => {
     const fetchData = async () => {
       try {
         dispatch(setLoading());
-        await dispatch(getUserInfo()).unwrap();
+        await dispatch(getUserInfo(userLogin.taiKhoan)).unwrap();
         dispatch(unSetLoading());
       } catch (error) {
         console.log("🚀 ~ error:", error);

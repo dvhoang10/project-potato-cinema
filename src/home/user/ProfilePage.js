@@ -146,11 +146,6 @@ const ProfilePage = () => {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      // taiKhoan: "dvhoang",
-      // hoTen: "hoangDHV",
-      // matKhau: "DVJPas@123",
-      // email: "dvhoang@gmail.com",
-      // soDt: "0123456789",
       taiKhoan: accountInfo.taiKhoan,
       hoTen: accountInfo.hoTen,
       matKhau: accountInfo.matKhau,
@@ -185,7 +180,9 @@ const ProfilePage = () => {
       try {
         await dispatch(updateUserInfo(user)).unwrap;
         message.success("Update successful");
-        navigate("/");
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       } catch (error) {
         console.log("🚀 ~ error:", error);
         message.error("Updata failed");
@@ -199,7 +196,7 @@ const ProfilePage = () => {
     const fetchData = async () => {
       try {
         dispatch(setLoading());
-        await dispatch(getUserInfo()).unwrap();
+        await dispatch(getUserInfo(userLogin.taiKhoan)).unwrap();
         dispatch(unSetLoading());
       } catch (error) {
         console.log("🚀 ~ error:", error);
@@ -207,7 +204,7 @@ const ProfilePage = () => {
       }
     };
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, userLogin.taiKhoan]);
   if (!localStoreService.getItemLocal(USER_LOGIN)) {
     return <Navigate to="/"></Navigate>;
   }
@@ -286,7 +283,7 @@ const ProfilePage = () => {
           <User.Box>
             <ProfilePageStyles.Col>
               <User.Avatar src="images/avatar.jpg" alt="avatar" />
-              <User.Name>Potato CINEMA</User.Name>
+              <User.Name>{accountInfo.hoTen}</User.Name>
             </ProfilePageStyles.Col>
           </User.Box>
           <ProfilePageStyles.Center>{renderForm()}</ProfilePageStyles.Center>

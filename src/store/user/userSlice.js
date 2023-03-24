@@ -33,12 +33,13 @@ const userSlice = createSlice({
         state.accountInfo = payload.accountInfo;
         state.ticket = payload.ticket;
       })
-      .addCase(updateUserInfo.fulfilled, (state, action) => {
-        state.userLogin = action.payload;
-        localStoreService.setItemLocal(USER_LOGIN, action.payload);
+      .addCase(updateUserInfo.fulfilled, (state, { payload }) => {
+        state.accountInfo = payload.accountInfo;
+        localStoreService.setItemLocal(USER_LOGIN, payload.data);
       });
   },
 });
+
 export const { userLogout } = userSlice.actions;
 
 export default userSlice.reducer;

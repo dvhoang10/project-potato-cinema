@@ -35,3 +35,40 @@ export const NavBarLink = [
     name: "People",
   },
 ];
+export const NavAdminLink = [
+  {
+    type: "movie",
+    link: [
+      {
+        path: "/admin/movie",
+        name: "Manage movies",
+      },
+      {
+        path: "/admin/movie/add",
+        name: "Add movie",
+      },
+    ],
+  },
+  {
+    type: "news",
+    link: [
+      {
+        path: "/admin/news",
+        name: "Manage news",
+      },
+      {
+        path: "/admin/news/add",
+        name: "Add news",
+      },
+    ],
+  },
+  {
+    type: "user",
+    link: [
+      {
+        path: "/admin/user",
+        name: "Manage users",
+      },
+    ],
+  },
+];

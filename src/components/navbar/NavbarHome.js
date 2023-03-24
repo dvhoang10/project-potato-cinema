@@ -1,115 +1,60 @@
 import ErrorComponent from "components/common/ErrorComponent";
 import React, { useState } from "react";
 import { withErrorBoundary } from "react-error-boundary";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { NavBarLink, POTATO, USER_LOGIN, USER_TOKEN } from "utils/config";
-import { FaBars, FaPlus } from "react-icons/fa";
 import { localStoreService } from "services/localStoreService";
 import { useDispatch } from "react-redux";
 import { userLogout } from "store/user/userSlice";
+import {
+  DropdownBlock,
+  DropdownBox,
+  DropdownContent,
+  DropdownLink,
+  NavbarBarIcon,
+  NavbarBox,
+  NavbarCloseIcon,
+  NavbarIcon,
+  NavbarLink,
+  NavbarList,
+  NavbarLogo,
+  NavbarLogobar,
+  NavbarWrapper,
+} from "./NavbarStyled";
 
 const NavStyles = {
-  Box: styled.header`
+  Box: styled(NavbarBox)`
     background-color: rgba(0, 0, 0, 0.75);
-    padding: 0.5rem 1rem;
-    @media (max-width: 900px) {
-      padding: 0.5rem 2rem;
-    }
   `,
-  Wrapper: styled.div`
+  Wrapper: styled(NavbarWrapper)`
     max-width: 1440px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    width: 90%;
     @media (max-width: 900px) {
       width: 100%;
       flex-direction: column;
     }
   `,
-  LogoBar: styled.div`
-    @media (max-width: 900px) {
-      width: 100%;
-      padding: 0.25rem 0rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  `,
-  Logo: styled.span`
-    font-size: 2.5rem;
-    font-family: "Changa", sans-serif;
-    text-transform: uppercase;
+  LogoBar: styled(NavbarLogobar)``,
+  Logo: styled(NavbarLogo)`
     color: var(--color-red);
-    font-weight: 700;
-    text-decoration: none;
-    @media (max-width: 1024px) {
-      font-size: 2.2rem;
-    }
-    @media (max-width: 400px) {
-      font-size: 1.8rem;
-    }
-    @media (max-width: 300px) {
-      font-size: 1.6rem;
-    }
   `,
-  Icon: styled.div`
-    font-size: 2.5rem;
-    display: none;
-    transition: all 0.5s ease-in-out;
-    cursor: pointer;
-    @media (max-width: 900px) {
-      display: flex;
-    }
-  `,
-  BarIcon: styled(FaBars)`
-    animation: fade-in 0.5s ease-in-out;
-  `,
-  CloseIcon: styled(FaPlus)`
-    transform: rotate(45deg);
-    animation: close 0.5s ease-in-out;
-  `,
-  List: styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  Icon: styled(NavbarIcon)``,
+  BarIcon: styled(NavbarBarIcon)``,
+  CloseIcon: styled(NavbarCloseIcon)``,
+  List: styled(NavbarList)`
     @media (max-width: 900px) {
       display: block;
-      width: 100%;
-      flex-direction: column;
-      justify-content: flex-start;
       background-color: rgba(0, 0, 0, 0.75);
-      position: absolute;
-      top: -100%;
-      z-index: 999;
       transition: all 0.8s ease-in-out 0s;
       overflow: hidden;
     }
   `,
-  Link: styled(NavLink)`
-    display: block;
-    font-size: 1rem;
-    line-height: 1.75rem;
-    padding: 0.5rem 1.25rem;
-    margin-right: 0.25rem;
-    color: var(--text-light);
-    transition: all 0.5s ease-in-out;
-    font-family: "Poppins", sans-serif;
-    :hover {
-      color: var(--text-light);
-      transform: scale(1.1);
-    }
+  Link: styled(NavbarLink)`
     @media (max-width: 1024px) {
       padding: 0.75rem;
     }
     @media (max-width: 900px) {
       padding: 1rem 1.5rem;
-      width: 100%;
-      margin: 0;
-      border-bottom: var(--border);
-      border-radius: 0;
       background-color: black;
       :hover {
         transform: unset;
@@ -119,73 +64,38 @@ const NavStyles = {
 };
 
 const Dropdown = {
-  Box: styled.div`
-    position: relative;
-    user-select: none;
-    transition: all 0.5s ease-in-out;
+  Box: styled(DropdownBox)`
     background-color: var(--color-red);
-    border-radius: 8px;
-    font-size: 1rem;
-    line-height: 1.75rem;
-    font-family: "Poppins", sans-serif;
     padding: 0 1rem;
     max-width: 140px;
-    :hover .dropdown-content {
-      display: block;
-    }
     @media (max-width: 900px) {
-      width: 100%;
       max-width: unset;
       border-radius: 0;
       padding: 0;
       background-color: unset;
     }
   `,
-  Block: styled.span`
+  Block: styled(DropdownBlock)`
     width: 100%;
     padding: 0.5rem 0;
     display: inline-block;
     cursor: pointer;
     @media (max-width: 900px) {
-      background-color: var(--color-primary);
-      border: none;
       padding: 1rem 1.5rem;
     }
   `,
-  Content: styled.div`
-    display: none;
-    position: absolute;
+  Content: styled(DropdownContent)`
     box-shadow: var(--shadow-dark);
-    z-index: 100;
-    border-radius: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0 0.5rem;
     width: 150px;
     background-color: var(--color-bg);
     @media (max-width: 900px) {
-      display: block;
-      position: unset;
-      box-shadow: none;
-      border-radius: 0;
-      transform: translateX(0);
       width: 100%;
       padding: 0;
     }
   `,
-  Link: styled(Link)`
-    display: block;
-    font-size: 1rem;
-    line-height: 1.75rem;
-    padding: 0.5rem 0;
-    margin: 0.5rem;
+  Link: styled(DropdownLink)`
     color: var(--text-light);
     border-radius: 8px;
-    font-family: "Poppins", sans-serif;
-    width: 100%;
-    margin: 0.5rem 0;
-    text-align: center;
-    transition: all 1s ease-in-out;
     :hover {
       color: var(--text-light);
       border: 1px solid var(--light);
@@ -194,8 +104,6 @@ const Dropdown = {
       padding: 1rem 1.5rem;
       width: 100%;
       margin: 0;
-      text-align: left;
-      border-radius: 0;
       background-color: black;
       :hover {
         border: 0;
@@ -220,6 +128,7 @@ const DropdownLogOut = styled(Dropdown.Link)`
   }
   @media (max-width: 900px) {
     background-color: var(--color-red);
+    border-radius: 0;
   }
 `;
 

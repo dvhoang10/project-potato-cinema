@@ -65,7 +65,7 @@ export const MovieModel = {
 export class UserModel {
   taiKhoan = "";
   email = "";
-  soDt = "";
+  soDT = "";
   hoTen = "";
   matKhau = "";
   maLoaiNguoiDung = "";

@@ -10,4 +10,10 @@ export const userService = {
   userInfo: () => {
     return httpCybersoftServices.post(`/api/QuanLyNguoiDung/ThongTinTaiKhoan`);
   },
+  userUpdate: (data) => {
+    return httpCybersoftServices.put(
+      `/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+      data
+    );
+  },
 };

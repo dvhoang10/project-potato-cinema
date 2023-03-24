@@ -10,6 +10,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import MovieDetailsPage from "home/movie/MovieDetailsPage";
 import BookingHistoryPage from "home/user/BookingHistoryPage";
+import ProfilePage from "home/user/ProfilePage";
 
 export default function Home() {
   document.body.style.background = "#191820";
@@ -36,6 +37,7 @@ export default function Home() {
           path="/person/:id"
           element={<PersonDetailsPage></PersonDetailsPage>}
         ></Route>
+        <Route path="/profile" element={<ProfilePage></ProfilePage>}></Route>
         <Route
           path="/booking-history"
           element={<BookingHistoryPage></BookingHistoryPage>}

@@ -1,7 +1,7 @@
 import { UserModel } from "models/models";
 import { localStoreService } from "services/localStoreService";
 import { USER_LOGIN, USER_TOKEN } from "utils/config";
-import { fecthUserLogin, getUserInfo } from "./userHandlers";
+import { fecthUserLogin, getUserInfo, updateUserInfo } from "./userHandlers";
 
 const { createSlice } = require("@reduxjs/toolkit");
 
@@ -14,7 +14,14 @@ const userSlice = createSlice({
     accountInfo: { ...UserModel },
     ticket: [],
   },
-  reducers: {},
+  reducers: {
+    userLogout: (state, action) => ({
+      ...state,
+      userLogin: "",
+      accountInfo: {},
+      ticket: [],
+    }),
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fecthUserLogin.fulfilled, (state, action) => {
@@ -25,8 +32,13 @@ const userSlice = createSlice({
       .addCase(getUserInfo.fulfilled, (state, { payload }) => {
         state.accountInfo = payload.accountInfo;
         state.ticket = payload.ticket;
+      })
+      .addCase(updateUserInfo.fulfilled, (state, action) => {
+        state.userLogin = action.payload;
+        localStoreService.setItemLocal(USER_LOGIN, action.payload);
       });
   },
 });
+export const { userLogout } = userSlice.actions;
 
 export default userSlice.reducer;

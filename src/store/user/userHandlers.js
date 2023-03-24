@@ -21,10 +21,17 @@ export const getUserInfo = createAsyncThunk(
   "userSlice/getUserInfo",
   async () => {
     const result = await userService.userInfo();
-    console.log("🚀 ~ result:", result);
     return {
       accountInfo: result.data.content,
       ticket: result.data.content.thongTinDatVe.reverse(),
     };
+  }
+);
+
+export const updateUserInfo = createAsyncThunk(
+  "userSlice/updateUserInfo",
+  async (data) => {
+    await userService.userUpdate(data);
+    return data;
   }
 );

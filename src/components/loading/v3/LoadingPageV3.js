@@ -1,6 +1,7 @@
 import ErrorComponent from "components/common/ErrorComponent";
 import { withErrorBoundary } from "react-error-boundary";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const LoadingPageV3Styles = styled.div`
   height: 100vh;
@@ -16,8 +17,12 @@ const LoadingPageV3Styles = styled.div`
   border-radius: 0.5rem;
 `;
 
-const LoadingPageV3 = (props) => {
-  return <LoadingPageV3Styles></LoadingPageV3Styles>;
+const LoadingPageV3 = ({ children }) => {
+  return <LoadingPageV3Styles>{children}</LoadingPageV3Styles>;
+};
+
+LoadingPageV3.prototype = {
+  children: PropTypes.node,
 };
 
 export default withErrorBoundary(LoadingPageV3, {

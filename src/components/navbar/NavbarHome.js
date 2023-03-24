@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { NavBarLink, POTATO, USER_LOGIN, USER_TOKEN } from "utils/config";
 import { FaBars, FaPlus } from "react-icons/fa";
 import { localStoreService } from "services/localStoreService";
+import { useDispatch } from "react-redux";
+import { userLogout } from "store/user/userSlice";
 
 const NavStyles = {
   Box: styled.header`
@@ -223,6 +225,7 @@ const DropdownLogOut = styled(Dropdown.Link)`
 
 const NavbarHome = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [showBar, setShowBar] = useState(false);
   const user = localStoreService.getItemLocal(USER_LOGIN);
   function renderLink({ navLink = false, path, name }) {
@@ -266,6 +269,7 @@ const NavbarHome = () => {
             onClick={() => {
               localStorage.removeItem(USER_LOGIN);
               localStorage.removeItem(USER_TOKEN);
+              dispatch(userLogout());
               navigate("/");
               setShowBar(false);
             }}

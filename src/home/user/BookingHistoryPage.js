@@ -11,6 +11,7 @@ import { USER_LOGIN } from "utils/config";
 import dayjs from "dayjs";
 import { Navigate } from "react-router-dom";
 import { Breakpoints } from "styles/Breakpoint";
+import { setLoading, unSetLoading } from "store/loading/loadingSlice";
 var localizedFormat = require("dayjs/plugin/localizedFormat");
 dayjs.extend(localizedFormat);
 
@@ -49,6 +50,7 @@ const BookingPageStyles = {
   `,
   Text: styled.p`
     margin-right: 0.25rem;
+    text-align: ${(props) => (props.center ? "center" : "left")};
     ${Breakpoints.sm} {
       height: auto;
       font-size: 0.875rem;
@@ -64,8 +66,17 @@ const BookingHistoryPage = () => {
     document.title = "Booking history";
   }, []);
   useEffect(() => {
-    dispatch(getUserInfo());
-    window.scroll(0, 0);
+    const fetchData = async () => {
+      try {
+        dispatch(setLoading());
+        await dispatch(getUserInfo()).unwrap();
+        dispatch(unSetLoading());
+      } catch (error) {
+        console.log("🚀 ~ error:", error);
+        dispatch(unSetLoading());
+      }
+    };
+    fetchData();
   }, [dispatch]);
   if (!localStoreService.getItemLocal(USER_LOGIN)) {
     return <Navigate to="/"></Navigate>;
@@ -73,7 +84,15 @@ const BookingHistoryPage = () => {
   return (
     <>
       {loading ? (
-        <LoadingPageV3></LoadingPageV3>
+        <LoadingPageV3>
+          <Container>
+            <Heading>Please wait a moment</Heading>
+            <BookingPageStyles.Text center>
+              Due to the large number of users, the system is trying to find
+              your information.
+            </BookingPageStyles.Text>
+          </Container>
+        </LoadingPageV3>
       ) : (
         <BookingPageStyles.Box>
           <Container>

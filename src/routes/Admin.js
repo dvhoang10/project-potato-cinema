@@ -1,7 +1,15 @@
+import Dashboard from "admin/dashboard/Dashboard";
+import MoviesManagePage from "admin/movies/MovieManagePage";
+import { ConfigProvider } from "antd";
 import NavbarAdmin from "components/navbar/NavbarAdmin";
 import React from "react";
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+
+const AdminStyles = styled.div`
+  min-height: 100vh;
+`;
 
 export default function Admin() {
   const { userLogin } = useSelector((state) => state.user);
@@ -12,8 +20,24 @@ export default function Admin() {
     return <Navigate to="/"></Navigate>;
   }
   return (
-    <>
-      <NavbarAdmin></NavbarAdmin>
-    </>
+    <ConfigProvider
+      theme={{
+        token: {
+          fontFamily: `"Poppins", sans-serif`,
+          colorPrimary: "#ca4242",
+        },
+      }}
+    >
+      <AdminStyles>
+        <NavbarAdmin></NavbarAdmin>
+        <Routes>
+          <Route path="/" element={<Dashboard></Dashboard>}></Route>
+          <Route
+            path="movie"
+            element={<MoviesManagePage></MoviesManagePage>}
+          ></Route>
+        </Routes>
+      </AdminStyles>
+    </ConfigProvider>
   );
 }

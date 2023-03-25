@@ -8,3 +8,11 @@ export const getMoviesList = createAsyncThunk(
     return result.data.content;
   }
 );
+
+export const deleteMovie = createAsyncThunk(
+  "moviesSlice/deleteMovie",
+  async (data) => {
+    const result = await movieService.movieDelete(data);
+    console.log("🚀 ~ result:", result);
+  }
+);

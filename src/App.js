@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<Home></Home>}></Route>
-        <Route path="/admin" element={<Admin></Admin>}></Route>
+        <Route path="/admin/*" element={<Admin></Admin>}></Route>
       </Routes>
       <Footer></Footer>
       <ModalVideoPlayTrailer></ModalVideoPlayTrailer>

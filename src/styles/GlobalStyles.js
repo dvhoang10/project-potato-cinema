@@ -58,6 +58,13 @@ export const GlobalStyles = createGlobalStyle`
     .logo {
         user-select: none;
     }
+    .swal2-timer-progress-bar {
+        background: var(--color-primary);
+    }
+    .swal2-popup{
+        width: 30rem;
+        max-width: 90%;
+    }
     @keyframes fade-in {
         0% {
             opacity: 0;

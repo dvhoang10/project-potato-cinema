@@ -11,4 +11,7 @@ export const movieService = {
       `/api/QuanLyPhim/LayDanhSachPhim?maNhom=${groupId}`
     );
   },
+  movieDelete: (id) => {
+    return httpCybersoftServices.delete(`api/QuanLyPhim/XoaPhim?MaPhim=${id}`);
+  },
 };

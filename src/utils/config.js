@@ -40,11 +40,11 @@ export const NavAdminLink = [
     type: "movie",
     link: [
       {
-        path: "/admin/movie",
+        path: "/admin",
         name: "Manage movies",
       },
       {
-        path: "/admin/movie/add",
+        path: "/admin/movie/add-new",
         name: "Add movie",
       },
     ],

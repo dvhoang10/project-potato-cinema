@@ -14,4 +14,10 @@ export const movieService = {
   movieDelete: (id) => {
     return httpCybersoftServices.delete(`api/QuanLyPhim/XoaPhim?MaPhim=${id}`);
   },
+  movieAddNew: (data) => {
+    return httpCybersoftServices.post(
+      `/api/QuanLyPhim/ThemPhimUploadHinh`,
+      data
+    );
+  },
 };

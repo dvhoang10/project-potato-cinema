@@ -1,4 +1,5 @@
 import Dashboard from "admin/dashboard/Dashboard";
+import MovieAddNew from "admin/movies/MovieAddNew";
 import MoviesManagePage from "admin/movies/MovieManagePage";
 import { ConfigProvider } from "antd";
 import NavbarAdmin from "components/navbar/NavbarAdmin";
@@ -31,10 +32,17 @@ export default function Admin() {
       <AdminStyles>
         <NavbarAdmin></NavbarAdmin>
         <Routes>
-          <Route path="/" element={<Dashboard></Dashboard>}></Route>
           <Route
-            path="movie"
+            path="/"
             element={<MoviesManagePage></MoviesManagePage>}
+          ></Route>
+          <Route
+            path="movie/add-new"
+            element={<MovieAddNew></MovieAddNew>}
+          ></Route>
+          <Route
+            path="movie/update/:id"
+            element={<MovieAddNew></MovieAddNew>}
           ></Route>
         </Routes>
       </AdminStyles>

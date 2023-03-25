@@ -19,7 +19,31 @@ export const AntdFormItem = styled(Form.Item)`
   }
   .ant-input,
   .ant-input-password {
-    font-size: 1.3rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .ant-input,
+  .ant-input-password,
+  .ant-picker-input input,
+  .ant-input-number {
+    font-size: 1rem;
+    border: none;
+  }
+  .ant-picker {
+    border: none;
+  }
+  .ant-switch,
+  .ant-switch:hover:not(.ant-switch-disabled) {
+    background: var(--dark-gray);
+  }
+  .ant-switch.ant-switch-checked {
+    background: #ca4242;
+  }
+  .ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+    background: #d66d69;
+  }
+  .ant-input-number {
+    width: 3.75rem;
   }
 `;
 

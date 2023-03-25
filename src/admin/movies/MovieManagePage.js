@@ -14,9 +14,11 @@ import {
   AiOutlineCalendar,
 } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
+import { HiStar } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { Tag } from "antd";
 import Swal from "sweetalert2";
+import dayjs from "dayjs";
 
 const MoviesMangeStyles = {
   Flex: styled.div`
@@ -36,6 +38,48 @@ const MoviesMangeStyles = {
     background: var(--blue-magenta);
     border-radius: 0.25rem;
     cursor: pointer;
+  `,
+};
+
+const NameMovieStyles = {
+  Link: styled(Link)`
+    display: block;
+    &:hover {
+      color: var(--dark);
+    }
+  `,
+  Flex: styled.div`
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+  `,
+  Image: styled.img`
+    width: 100px;
+    height: 100%;
+    border-radius: 0.5rem;
+    object-fit: cover;
+  `,
+  Info: styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.25rem;
+    h3 {
+      font-weight: 700;
+      color: var(--dark);
+      font-size: 1rem;
+    }
+    p {
+      font-size: 0.875rem;
+      font-style: italic;
+    }
+    .rate {
+      display: flex;
+      align-items: center;
+      column-gap: 0.25rem;
+      svg {
+      }
+    }
   `,
 };
 
@@ -86,30 +130,33 @@ const MoviesManagePage = () => {
       },
     },
     {
-      title: "Poster",
-      dataIndex: "hinhAnh",
+      title: "Name",
+      dataIndex: ["tenPhim", "hinhAnh", "ngayKhoiChieu", "danhGia"],
       render: (text, movie) => {
         return (
-          <Link to={`/movie/${movie.biDanh}-${movie.maPhim}`} target="_blank">
-            <img
-              src={movie.hinhAnh}
-              alt={movie.tenPhim}
-              width={100}
-              height={150}
-              onError={(e) => {
-                e.target.onError = null;
-                e.target.src = "https://picsum.photos/id/1021/100/150";
-              }}
-            />
-          </Link>
+          <NameMovieStyles.Link to={`/movie/${movie.maPhim}`} target="_blank">
+            <NameMovieStyles.Flex>
+              <NameMovieStyles.Image
+                src={movie.hinhAnh}
+                alt={movie.tenPhim}
+                onError={(e) => {
+                  e.target.onError = null;
+                  e.target.src = "https://picsum.photos/id/1021/100/150";
+                }}
+              />
+              <NameMovieStyles.Info>
+                <h3>{movie.tenPhim}</h3>
+                <p>Release year: {dayjs(movie.ngayKhoiChieu).year()} </p>
+                <span className="rate">
+                  <span>{movie.danhGia}</span>
+                  <HiStar></HiStar>
+                </span>
+              </NameMovieStyles.Info>
+            </NameMovieStyles.Flex>
+          </NameMovieStyles.Link>
         );
       },
-      width: "12%",
-    },
-    {
-      title: "Title",
-      dataIndex: "tenPhim",
-      width: "20%",
+      width: "25%",
     },
     {
       title: "Overview",
@@ -127,7 +174,7 @@ const MoviesManagePage = () => {
     },
     {
       title: "Status",
-      width: "10%",
+      width: "8%",
       render: (movie) => (
         <>
           {movie.dangChieu ? (
@@ -225,8 +272,10 @@ const MoviesManagePage = () => {
           size="large"
           onSearch={onSearch}
         ></AntdSearch>
-        <MoviesMangeStyles.Add onClick={() => setVisible(true)}>
-          <FaPlus />
+        <MoviesMangeStyles.Add>
+          <Link to="/admin/movie/add-new">
+            <FaPlus />
+          </Link>
         </MoviesMangeStyles.Add>
       </MoviesMangeStyles.Flex>
       <AntdTable

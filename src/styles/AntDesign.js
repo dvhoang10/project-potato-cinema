@@ -1,4 +1,4 @@
-import { Form, Input, Table } from "antd";
+import { Form, Input, Modal, Table } from "antd";
 import styled from "styled-components";
 import { Breakpoints } from "./Breakpoint";
 
@@ -85,6 +85,9 @@ export const AntdTable = styled(Table)`
       font-size: 1rem;
       padding: 0.5rem;
     }
+  }
+  .ant-table-thead tr th.ant-table-column-sort {
+    background: var(--color-primary);
   }
   .ant-table-cell {
     border-start-end-radius: 0 !important;

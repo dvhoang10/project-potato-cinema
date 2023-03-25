@@ -110,7 +110,7 @@ const MovieUpdate = () => {
   };
   return (
     <Container>
-      <Heading admin>Add New Movie</Heading>
+      <Heading admin>Update Movie</Heading>
       <FormMovieStyles.Form onFinish={formik.handleSubmit}>
         <AntdFormItem label="Name">
           <Input

@@ -1,5 +1,5 @@
 import ErrorComponent from "components/common/ErrorComponent";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { withErrorBoundary } from "react-error-boundary";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteMovie, getMoviesList } from "store/movie/movieHandlers";
@@ -20,7 +20,7 @@ import { Tag } from "antd";
 import Swal from "sweetalert2";
 import dayjs from "dayjs";
 
-const MoviesMangeStyles = {
+const MoviesManageStyles = {
   Flex: styled.div`
     display: flex;
     align-items: center;
@@ -90,7 +90,6 @@ const ActionStyles = styled.div`
 
 const MoviesManagePage = () => {
   const dispatch = useDispatch();
-  const [visible, setVisible] = useState(false);
   const { movieList } = useSelector((state) => state.movie);
   const fetchData = async () => {
     try {
@@ -146,7 +145,9 @@ const MoviesManagePage = () => {
               />
               <NameMovieStyles.Info>
                 <h3>{movie.tenPhim}</h3>
-                <p>Release year: {dayjs(movie.ngayKhoiChieu).year()} </p>
+                <p>
+                  Release: {dayjs(movie.ngayKhoiChieu).format("DD/MM/YYYY")}{" "}
+                </p>
                 <span className="rate">
                   <span>{movie.danhGia}</span>
                   <HiStar></HiStar>
@@ -248,8 +249,9 @@ const MoviesManagePage = () => {
   ];
   const onSearch = async (value) => {
     try {
-      await dispatch(getMoviesList({ groupId: GROUP_ID_MOVIE, name: value }))
-        .unwrap;
+      await dispatch(
+        getMoviesList({ groupId: GROUP_ID_MOVIE, name: value })
+      ).unwrap();
     } catch (error) {
       console.log("🚀 ~ error:", error);
     }
@@ -261,28 +263,31 @@ const MoviesManagePage = () => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  function onChange() {
+    window.scroll(0, 0);
+  }
   return (
     <Container>
       <Heading admin>Manage Movies</Heading>
-      <MoviesMangeStyles.Flex>
+      <MoviesManageStyles.Flex>
         <AntdSearch
           placeholder="Search movie..."
           enterButton={<AiOutlineSearch />}
           size="large"
           onSearch={onSearch}
         ></AntdSearch>
-        <MoviesMangeStyles.Add>
+        <MoviesManageStyles.Add>
           <Link to="/admin/movie/add-new">
             <FaPlus />
           </Link>
-        </MoviesMangeStyles.Add>
-      </MoviesMangeStyles.Flex>
+        </MoviesManageStyles.Add>
+      </MoviesManageStyles.Flex>
       <AntdTable
         columns={moviesColumnTable}
         dataSource={movieList}
         rowKey="maPhim"
         scroll={{ x: 1300 }}
+        onChange={onChange}
         pagination={{
           defaultPageSize: 5,
           showSizeChanger: false,

@@ -38,3 +38,19 @@ export const updateUserInfo = createAsyncThunk(
     };
   }
 );
+
+export const getUsersList = createAsyncThunk(
+  "userSlice/getUsersList",
+  async ({ groupId, keyword }) => {
+    const result = await userService.usersList(groupId, keyword);
+    return result.data.content;
+  }
+);
+
+export const deleteUser = createAsyncThunk(
+  "movieSlice/deleteMovie",
+  async (data) => {
+    const result = await userService.userDelete(data);
+    return result.data.content;
+  }
+);

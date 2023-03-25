@@ -19,4 +19,19 @@ export const userService = {
       data
     );
   },
+  usersList: (groupId, keyword) => {
+    if (keyword) {
+      return httpCybersoftServices.get(
+        `/api/QuanLyNguoiDung/TimKiemNguoiDung?maNhom=${groupId}&tuKhoa=${keyword}`
+      );
+    }
+    return httpCybersoftServices.get(
+      `/api/QuanLyNguoiDung/TimKiemNguoiDung?maNhom=${groupId}`
+    );
+  },
+  userDelete: (data) => {
+    return httpCybersoftServices.delete(
+      `/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${data}`
+    );
+  },
 };

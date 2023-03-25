@@ -1,6 +1,7 @@
 import Dashboard from "admin/dashboard/Dashboard";
 import MovieAddNew from "admin/movies/MovieAddNew";
 import MoviesManagePage from "admin/movies/MovieManagePage";
+import MovieUpdate from "admin/movies/MovieUpdate";
 import { ConfigProvider } from "antd";
 import NavbarAdmin from "components/navbar/NavbarAdmin";
 import React from "react";
@@ -42,7 +43,7 @@ export default function Admin() {
           ></Route>
           <Route
             path="movie/update/:id"
-            element={<MovieAddNew></MovieAddNew>}
+            element={<MovieUpdate></MovieUpdate>}
           ></Route>
         </Routes>
       </AdminStyles>

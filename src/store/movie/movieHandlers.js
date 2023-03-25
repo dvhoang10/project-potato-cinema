@@ -24,3 +24,19 @@ export const addMovie = createAsyncThunk(
     return result.data.content;
   }
 );
+
+export const getMovieInfo = createAsyncThunk(
+  "movieSlice/getMovieInfo",
+  async (data) => {
+    const result = await movieService.movieInfo(data);
+    return result.data.content;
+  }
+);
+
+export const updateMovieInfo = createAsyncThunk(
+  "movieSlice/getMovieInfo",
+  async (data) => {
+    const result = await movieService.movieUpdateInfo(data);
+    return result.data.content;
+  }
+);

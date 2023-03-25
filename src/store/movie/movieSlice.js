@@ -1,4 +1,5 @@
-import { getMoviesList } from "./movieHandlers";
+import { MovieCyberModel } from "models/models";
+import { getMovieInfo, getMoviesList } from "./movieHandlers";
 
 const { createSlice } = require("@reduxjs/toolkit");
 
@@ -9,20 +10,12 @@ const movieSlice = createSlice({
     nowShowing: [],
     movieList: [
       {
-        maPhim: 0,
-        tenPhim: "",
-        biDanh: "",
-        trailer: "",
-        hinhAnh: "",
-        moTa: "",
-        maNhom: "",
-        ngayKhoiChieu: "",
-        danhGia: 0,
-        hot: false,
-        dangChieu: false,
-        sapChieu: false,
+        ...MovieCyberModel,
       },
     ],
+    movieInfo: {
+      ...MovieCyberModel,
+    },
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -30,6 +23,9 @@ const movieSlice = createSlice({
       state.movieList = action.payload;
       state.comingSoon = state.movieList.filter((movie) => movie.sapChieu);
       state.nowShowing = state.movieList.filter((movie) => movie.dangChieu);
+    });
+    builder.addCase(getMovieInfo.fulfilled, (state, action) => {
+      state.movieInfo = action.payload;
     });
   },
 });

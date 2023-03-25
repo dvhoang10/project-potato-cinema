@@ -196,7 +196,7 @@ const MoviesManagePage = () => {
       render: (text, movie) => {
         return (
           <ActionStyles>
-            <Link key={1} to={`/admin/movie/edit/${movie.maPhim}`}>
+            <Link key={1} to={`/admin/movie/update/${movie.maPhim}`}>
               <AiOutlineEdit
                 style={{
                   color: "#3b586f",

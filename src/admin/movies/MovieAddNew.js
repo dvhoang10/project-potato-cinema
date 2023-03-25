@@ -3,7 +3,7 @@ import ErrorComponent from "components/common/ErrorComponent";
 import dayjs from "dayjs";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { withErrorBoundary } from "react-error-boundary";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,7 @@ import {
   ImageUploadStyles,
 } from "styles/FormMovieStyles";
 import { addMovie } from "store/movie/movieHandlers";
+import { GROUP_ID_MOVIE } from "utils/config";
 
 const MovieAddNew = () => {
   const [imgSrc, setImgSrc] = useState("");
@@ -32,7 +33,7 @@ const MovieAddNew = () => {
       sapChieu: false,
       hot: false,
       danhGia: 0,
-      hinhAnh: {},
+      hinhAnh: null,
     },
     validationSchema: Yup.object().shape({
       tenPhim: Yup.string().required("Please input movie title"),
@@ -43,7 +44,7 @@ const MovieAddNew = () => {
     }),
     onSubmit: async (values) => {
       console.log("🚀 ~ values:", values);
-      values.maNhom = "GP13";
+      values.maNhom = GROUP_ID_MOVIE;
       let formData = new FormData();
       for (let key in values) {
         if (key !== "hinhAnh") {
@@ -85,6 +86,9 @@ const MovieAddNew = () => {
       formik.setFieldValue("hinhAnh", file);
     }
   };
+  useEffect(() => {
+    document.title = "Add new movie";
+  }, []);
   return (
     <Container>
       <Heading admin>Add New Movie</Heading>
@@ -147,7 +151,7 @@ const MovieAddNew = () => {
               )}
             </ImageUploadStyles.Label>
             {formik.touched.hinhAnh && formik.errors.hinhAnh ? (
-              <div>{formik.errors.hinhAnh}</div>
+              <div className="error">{formik.errors.hinhAnh}</div>
             ) : null}
           </AntdFormItem>
           <div>

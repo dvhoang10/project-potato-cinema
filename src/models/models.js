@@ -1,4 +1,4 @@
-import { GROUP_ID_USER } from "utils/config";
+import { GROUP_ID_MOVIE, GROUP_ID_USER } from "utils/config";
 
 export const PersonModel = {
   adult: false,
@@ -62,12 +62,27 @@ export const MovieModel = {
   cast: { ...Cast },
 };
 
-export class UserModel {
-  taiKhoan = "";
-  email = "";
-  soDT = "";
-  hoTen = "";
-  matKhau = "";
-  maLoaiNguoiDung = "";
-  maNhom = GROUP_ID_USER;
-}
+export const UserModel = {
+  taiKhoan: "",
+  email: "",
+  soDT: "",
+  hoTen: "",
+  matKhau: "",
+  maLoaiNguoiDung: "",
+  maNhom: GROUP_ID_USER,
+};
+
+export const MovieCyberModel = {
+  maPhim: 0,
+  tenPhim: "",
+  biDanh: "",
+  trailer: "",
+  hinhAnh: "",
+  moTa: "",
+  maNhom: GROUP_ID_MOVIE,
+  ngayKhoiChieu: "",
+  danhGia: 0,
+  hot: false,
+  dangChieu: false,
+  sapChieu: false,
+};

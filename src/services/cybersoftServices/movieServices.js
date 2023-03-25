@@ -20,4 +20,15 @@ export const movieService = {
       data
     );
   },
+  movieInfo: (id) => {
+    return httpCybersoftServices.get(
+      `/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`
+    );
+  },
+  movieUpdateInfo: (data) => {
+    return httpCybersoftServices.post(
+      `/api/QuanLyPhim/CapNhatPhimUpload`,
+      data
+    );
+  },
 };

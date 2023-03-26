@@ -12,4 +12,9 @@ export const cinemaService = {
   showTimeAddNew: (data) => {
     return httpCybersoftServices.post(`api/QuanLyDatVe/TaoLichChieu`, data);
   },
+  showTimeInfo: (id) => {
+    return httpCybersoftServices.get(
+      `api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`
+    );
+  },
 };

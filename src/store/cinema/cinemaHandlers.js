@@ -13,6 +13,14 @@ export const addShowTime = createAsyncThunk(
   "cinemaSlice/addShowtime",
   async (data) => {
     const result = await cinemaService.showTimeAddNew(data);
+    return result.data.content;
+  }
+);
+
+export const getShowtimeinfo = createAsyncThunk(
+  "cinemaSlice/getShowtimeInfo",
+  async (data) => {
+    const result = await cinemaService.showTimeInfo(data);
     console.log("🚀 ~ result:", result);
     return result.data.content;
   }

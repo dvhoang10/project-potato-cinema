@@ -1,5 +1,5 @@
-import { MovieCyberModel } from "models/models";
-import { getMovieInfo, getMoviesList } from "./movieHandlers";
+import { Cinema, MovieCyberModel } from "models/models";
+import { getMovieDetails, getMovieInfo, getMoviesList } from "./movieHandlers";
 
 const { createSlice } = require("@reduxjs/toolkit");
 
@@ -16,6 +16,12 @@ const movieSlice = createSlice({
     movieInfo: {
       ...MovieCyberModel,
     },
+    movieDetails: {
+      ...MovieCyberModel,
+      heThongRapChieu: {
+        ...Cinema,
+      },
+    },
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -26,6 +32,9 @@ const movieSlice = createSlice({
     });
     builder.addCase(getMovieInfo.fulfilled, (state, action) => {
       state.movieInfo = action.payload;
+    });
+    builder.addCase(getMovieDetails.fulfilled, (state, action) => {
+      state.movieDetails = action.payload;
     });
   },
 });

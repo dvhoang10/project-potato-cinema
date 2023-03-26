@@ -43,7 +43,6 @@ const MovieAddNew = () => {
       hinhAnh: Yup.mixed().required("Please upload movie poster"),
     }),
     onSubmit: async (values) => {
-      console.log("🚀 ~ values:", values);
       values.maNhom = GROUP_ID_MOVIE;
       let formData = new FormData();
       for (let key in values) {

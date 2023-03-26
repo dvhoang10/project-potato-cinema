@@ -96,36 +96,34 @@ const HomeBanner = () => {
   return (
     <HomeBannerStyles.Slider {...settings}>
       {BannerList.map((banner) => (
-        <LazyLoadComponent key={banner.id}>
-          <HomeBannerStyles.Box>
-            <Link to={banner.link}>
-              <HomeBannerStyles.Backdrop backdrop={banner.backdrop} />
-            </Link>
-            <HomeBannerStyles.Content>
-              <HomeBannerStyles.Background>
-                <HomeBannerStyles.Name>{banner.name}</HomeBannerStyles.Name>
-                <HomeBannerStyles.Tagline>
-                  {banner.tagline}
-                </HomeBannerStyles.Tagline>
-                <HomeBannerStyles.Button
-                  bg="var(--color-red)"
-                  onClick={() => {
-                    dispatch(
-                      setStatus({
-                        isOpen: true,
-                        videoId: getVideoId(banner.trailer).id,
-                      })
-                    );
-                  }}
-                >
-                  <HomeBannerStyles.PlayTrailer>
-                    WATCH TRAILER
-                  </HomeBannerStyles.PlayTrailer>
-                </HomeBannerStyles.Button>
-              </HomeBannerStyles.Background>
-            </HomeBannerStyles.Content>
-          </HomeBannerStyles.Box>
-        </LazyLoadComponent>
+        <HomeBannerStyles.Box key={banner.id}>
+          <Link to={banner.link}>
+            <HomeBannerStyles.Backdrop backdrop={banner.backdrop} />
+          </Link>
+          <HomeBannerStyles.Content>
+            <HomeBannerStyles.Background>
+              <HomeBannerStyles.Name>{banner.name}</HomeBannerStyles.Name>
+              <HomeBannerStyles.Tagline>
+                {banner.tagline}
+              </HomeBannerStyles.Tagline>
+              <HomeBannerStyles.Button
+                bg="var(--color-red)"
+                onClick={() => {
+                  dispatch(
+                    setStatus({
+                      isOpen: true,
+                      videoId: getVideoId(banner.trailer).id,
+                    })
+                  );
+                }}
+              >
+                <HomeBannerStyles.PlayTrailer>
+                  WATCH TRAILER
+                </HomeBannerStyles.PlayTrailer>
+              </HomeBannerStyles.Button>
+            </HomeBannerStyles.Background>
+          </HomeBannerStyles.Content>
+        </HomeBannerStyles.Box>
       ))}
     </HomeBannerStyles.Slider>
   );

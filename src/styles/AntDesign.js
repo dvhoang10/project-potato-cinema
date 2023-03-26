@@ -27,10 +27,6 @@ export const AntdFormItem = styled(Form.Item)`
   .ant-picker-input input,
   .ant-input-number {
     font-size: 1rem;
-    border: none;
-  }
-  .ant-picker {
-    border: none;
   }
   .ant-switch,
   .ant-switch:hover:not(.ant-switch-disabled) {
@@ -133,6 +129,66 @@ export const AntdTable = styled(Table)`
     text-transform: uppercase;
     min-width: 100px;
     text-align: center;
+    ${Breakpoints.sm} {
+      font-size: 0.875rem;
+    }
+  }
+`;
+
+export const AntDesignModal = styled(Modal)`
+  .ant-modal-content {
+    margin: 1rem 0;
+  }
+  .ant-modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  label {
+    color: var(--dark) !important;
+    text-align: left;
+    display: block;
+    font-size: 1.125rem !important;
+    width: 200px;
+    ${Breakpoints.sm} {
+      font-size: 1rem !important;
+    }
+  }
+  .ant-form-item-label
+    > label.ant-form-item-required:not(
+      .ant-form-item-required-mark-optional
+    ):before {
+    display: none;
+  }
+  span {
+    font-size: 1rem;
+  }
+  .ant-btn-primary {
+    height: auto;
+    background-color: var(--color-primary);
+  }
+  .ant-select-single.ant-select-show-arrow .ant-select-selection-item {
+    padding: 4px 0;
+  }
+  .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+    height: auto;
+  }
+  .ant-btn {
+    height: auto;
+  }
+  .ant-modal-close {
+    display: none;
+  }
+  .ant-input-password,
+  .ant-input {
+    border: 1px solid #d9d9d9;
+  }
+  .ant-form-item {
+    margin-bottom: 1rem;
+  }
+  .ant-input,
+  .ant-select-selection-item {
     ${Breakpoints.sm} {
       font-size: 0.875rem;
     }

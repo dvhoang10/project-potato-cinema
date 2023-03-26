@@ -24,11 +24,11 @@ export const NavBarLink = [
     path: "/now-showing",
     name: "Now Showing",
   },
-  {
-    navLink: true,
-    path: "/news",
-    name: "News",
-  },
+  // {
+  //   navLink: true,
+  //   path: "/news",
+  //   name: "News",
+  // },
   {
     navLink: true,
     path: "/people",
@@ -49,19 +49,19 @@ export const NavAdminLink = [
       },
     ],
   },
-  {
-    type: "news",
-    link: [
-      {
-        path: "/admin/news",
-        name: "Manage news",
-      },
-      {
-        path: "/admin/news/add",
-        name: "Add news",
-      },
-    ],
-  },
+  // {
+  //   type: "news",
+  //   link: [
+  //     {
+  //       path: "/admin/news",
+  //       name: "Manage news",
+  //     },
+  //     {
+  //       path: "/admin/news/add",
+  //       name: "Add news",
+  //     },
+  //   ],
+  // },
   {
     type: "user",
     link: [

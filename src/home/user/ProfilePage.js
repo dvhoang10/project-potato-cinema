@@ -168,7 +168,6 @@ const ProfilePage = () => {
       hoTen: Yup.string().required("Please input your name"),
     }),
     onSubmit: async (values) => {
-      console.log("🚀 ~ values:", values);
       const user = { ...UserModel };
       user.taiKhoan = values.taiKhoan;
       user.matKhau = values.matKhau;
@@ -179,6 +178,7 @@ const ProfilePage = () => {
       user.maLoaiNguoiDung = userLogin.maLoaiNguoiDung;
       try {
         await dispatch(updateUserInfo(user)).unwrap;
+        localStoreService.setItemLocal(USER_LOGIN, user);
         message.success("Update successful");
         setTimeout(() => {
           window.location.reload();

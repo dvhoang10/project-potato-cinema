@@ -44,10 +44,6 @@ const userSlice = createSlice({
         state.accountInfo = payload.accountInfo;
         state.ticket = payload.ticket;
       })
-      .addCase(updateUserInfo.fulfilled, (state, { payload }) => {
-        state.accountInfo = payload.accountInfo;
-        localStoreService.setItemLocal(USER_LOGIN, payload.data);
-      })
       .addCase(getUsersList.fulfilled, (state, action) => {
         state.usersList = action.payload;
       });

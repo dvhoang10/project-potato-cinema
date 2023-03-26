@@ -34,7 +34,7 @@ export const getMovieInfo = createAsyncThunk(
 );
 
 export const updateMovieInfo = createAsyncThunk(
-  "movieSlice/getMovieInfo",
+  "movieSlice/updateMovieInfo",
   async (data) => {
     const result = await movieService.movieUpdateInfo(data);
     return result.data.content;

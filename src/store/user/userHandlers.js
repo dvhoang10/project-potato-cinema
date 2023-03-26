@@ -32,10 +32,15 @@ export const updateUserInfo = createAsyncThunk(
   "userSlice/updateUserInfo",
   async (data) => {
     const result = await userService.userUpdate(data);
-    return {
-      accountInfo: result.data.content,
-      data,
-    };
+    return result.data.content;
+  }
+);
+
+export const updateUserInfoWithAdmin = createAsyncThunk(
+  "userSlice/updateUserInfo",
+  async (data) => {
+    const result = await userService.userUpdateWithAdmin(data);
+    return result.data.content;
   }
 );
 
@@ -48,7 +53,7 @@ export const getUsersList = createAsyncThunk(
 );
 
 export const deleteUser = createAsyncThunk(
-  "movieSlice/deleteMovie",
+  "userSlice/deleteMovie",
   async (data) => {
     const result = await userService.userDelete(data);
     return result.data.content;

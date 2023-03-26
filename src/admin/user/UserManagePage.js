@@ -1,4 +1,4 @@
-import { Tag } from "antd";
+import { Button, Tag } from "antd";
 import ErrorComponent from "components/common/ErrorComponent";
 import { UserModel } from "models/models";
 import React, { useEffect, useState } from "react";
@@ -11,10 +11,11 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { deleteUser, getUsersList } from "store/user/userHandlers";
 import styled from "styled-components";
-import { AntdSearch, AntdTable } from "styles/AntDesign";
+import { AntDesignModal, AntdSearch, AntdTable } from "styles/AntDesign";
 import { Container, Heading } from "styles/Styles";
 import Swal from "sweetalert2";
 import { GROUP_ID_USER } from "utils/config";
+import UserUpdate from "./UserUpdate";
 
 const UsersManageStyles = {
   Flex: styled.div`
@@ -49,7 +50,6 @@ const UserManagePage = () => {
     user: { ...UserModel },
   });
   const { usersList } = useSelector((state) => state.user);
-  console.log("🚀 ~ usersList:", usersList);
   const fetchData = async () => {
     try {
       await dispatch(getUsersList({ groupId: GROUP_ID_USER })).unwrap();
@@ -79,14 +79,12 @@ const UserManagePage = () => {
   };
   const setUserInfo = (user) => {
     const userInfo = { ...UserModel };
-
     userInfo.taiKhoan = user.taiKhoan;
     userInfo.email = user.email;
     userInfo.hoTen = user.hoTen;
     userInfo.soDT = user.soDT;
     userInfo.matKhau = user.matKhau;
     userInfo.maLoaiNguoiDung = user.maLoaiNguoiDung;
-
     return setModal({
       visible: true,
       user: userInfo,
@@ -232,6 +230,34 @@ const UserManagePage = () => {
         scroll={{ x: 1300 }}
         pagination={{ pageSize: 25, showSizeChanger: false }}
       />
+      <AntDesignModal
+        title={`Edit User`}
+        centered
+        visible={modal.visible}
+        footer={[
+          <Button
+            key="back"
+            onClick={() => {
+              setModal({
+                ...modal,
+                visible: false,
+              });
+            }}
+          >
+            Return
+          </Button>,
+        ]}
+      >
+        <UserUpdate
+          userInfo={modal.user}
+          hideModal={() => {
+            setModal({
+              ...modal,
+              visible: false,
+            });
+          }}
+        ></UserUpdate>
+      </AntDesignModal>
     </Container>
   );
 };

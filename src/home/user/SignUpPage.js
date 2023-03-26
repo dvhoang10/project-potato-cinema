@@ -58,7 +58,7 @@ const SignUpPage = () => {
       taiKhoan: "",
       matKhau: "",
       email: "",
-      soDt: "",
+      soDT: "",
       maNhom: "",
     },
     onSubmit: async (values) => {
@@ -158,7 +158,7 @@ const SignUpPage = () => {
           <Input onChange={formik.handleChange} />
         </AntdFormItem>
         <AntdFormItem
-          name="soDt"
+          name="soDT"
           label="Phone"
           rules={[
             { required: true, message: "Please input your phone!" },

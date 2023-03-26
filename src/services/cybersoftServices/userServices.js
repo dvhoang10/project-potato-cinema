@@ -19,6 +19,12 @@ export const userService = {
       data
     );
   },
+  userUpdateWithAdmin: (data) => {
+    return httpCybersoftServices.post(
+      `/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+      data
+    );
+  },
   usersList: (groupId, keyword) => {
     if (keyword) {
       return httpCybersoftServices.get(

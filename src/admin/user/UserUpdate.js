@@ -125,7 +125,9 @@ const UserUpdate = ({ userInfo, hideModal }) => {
         </Select>
       </AntdFormItem>
       <AntdFormItem>
-        <StyledButton type="submit">Update</StyledButton>
+        <StyledButton textTransform="uppercase" type="submit">
+          Update
+        </StyledButton>
       </AntdFormItem>
     </AntdForm>
   );

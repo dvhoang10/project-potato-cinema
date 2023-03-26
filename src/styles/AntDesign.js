@@ -38,9 +38,6 @@ export const AntdFormItem = styled(Form.Item)`
   .ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
     background: #d66d69;
   }
-  .ant-input-number {
-    width: 3.75rem;
-  }
 `;
 
 export const AntdSearch = styled(Input.Search)`

@@ -52,11 +52,11 @@ const MovieAddNew = () => {
       }
       try {
         await dispatch(addMovie(formData)).unwrap();
-        message.success("Successful");
+        message.success("Add successful");
         navigate("/admin");
       } catch (error) {
         console.log("🚀 ~ error:", error);
-        message.error("Failed");
+        message.error("Add failed");
       }
     },
   });

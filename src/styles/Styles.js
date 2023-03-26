@@ -23,6 +23,7 @@ export const StyledLogo = styled.h3`
 `;
 
 export const StyledButton = styled.button`
+  font-family: "Poppins", sans-serif;
   background: var(--color-red);
   border: none;
   color: var(--text-light);
@@ -48,7 +49,7 @@ export const StyledButton = styled.button`
     top: -50%;
     bottom: -50%;
     width: 1.25em;
-    transform: translate3d(-825%, 0, 0) rotate(35deg);
+    transform: translate3d(-900%, 0, 0) rotate(35deg);
   }
   :hover::after {
     transition: transform 0.5s ease-in-out;

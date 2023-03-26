@@ -1,5 +1,6 @@
 import Dashboard from "admin/dashboard/Dashboard";
 import MovieAddNew from "admin/movies/MovieAddNew";
+import MovieAddShowtime from "admin/movies/MovieAddShowtime";
 import MoviesManagePage from "admin/movies/MovieManagePage";
 import MovieUpdate from "admin/movies/MovieUpdate";
 import UserManagePage from "admin/user/UserManagePage";
@@ -45,6 +46,10 @@ export default function Admin() {
           <Route
             path="/movie/update/:id"
             element={<MovieUpdate></MovieUpdate>}
+          ></Route>
+          <Route
+            path="/movie/showtime/:id"
+            element={<MovieAddShowtime></MovieAddShowtime>}
           ></Route>
           <Route
             path="/user"

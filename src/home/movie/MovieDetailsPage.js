@@ -156,7 +156,7 @@ const MovieDetailsPage = () => {
             out soon.
           </Styles.NoShowtime>
         </>
-      ) : movieDetails.heThongRapChieu === 0 ? (
+      ) : movieDetails.heThongRapChieu.length === 0 ? (
         <Styles.NoShowtime>
           We don't have any showtime for{" "}
           <Styles.MovieName>{movieDetails.tenPhim}</Styles.MovieName>

@@ -59,6 +59,9 @@ function LoginPage() {
         await dispatch(fecthUserLogin(values)).unwrap();
         message.success("Login successful");
         navigate("/");
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       } catch (error) {
         console.log("🚀 ~ error:", error.response);
         message.error("Login failed");

@@ -17,4 +17,12 @@ export const cinemaService = {
       `api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`
     );
   },
+  movieShowtime: (id) => {
+    return httpCybersoftServices.get(
+      `api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`
+    );
+  },
+  movieBooking: (data) => {
+    return httpCybersoftServices.post(`api/QuanLyDatVe/DatVe`, data);
+  },
 };

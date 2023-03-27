@@ -48,3 +48,9 @@ export const MovieCyberModel = {
   dangChieu: false,
   sapChieu: false,
 };
+
+export const BookingModel = {
+  maLichChieu: 0,
+  danhSachVe: [],
+  taiKhoanNguoiDung: "",
+};

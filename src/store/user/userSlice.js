@@ -1,12 +1,7 @@
 import { UserModel } from "models/models";
 import { localStoreService } from "services/localStoreService";
 import { USER_LOGIN, USER_TOKEN } from "utils/config";
-import {
-  fecthUserLogin,
-  getUserInfo,
-  getUsersList,
-  updateUserInfo,
-} from "./userHandlers";
+import { fecthUserLogin, getUserInfo, getUsersList } from "./userHandlers";
 
 const { createSlice } = require("@reduxjs/toolkit");
 

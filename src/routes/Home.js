@@ -11,6 +11,7 @@ import { Route, Routes } from "react-router-dom";
 import MovieDetailsPage from "home/movie/MovieDetailsPage";
 import BookingHistoryPage from "home/user/BookingHistoryPage";
 import ProfilePage from "home/user/ProfilePage";
+import BookingPage from "home/booking/BookingPage";
 
 export default function Home() {
   document.body.style.background = "#191820";
@@ -30,6 +31,10 @@ export default function Home() {
         <Route
           path="/movie/:id"
           element={<MovieDetailsPage></MovieDetailsPage>}
+        ></Route>
+        <Route
+          path="/booking/:id"
+          element={<BookingPage></BookingPage>}
         ></Route>
         <Route path="/people" element={<PeoplePage></PeoplePage>}></Route>
         <Route path="/people/:page" element={<PeoplePage></PeoplePage>}></Route>

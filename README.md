@@ -9,16 +9,16 @@
 
 ## :sparkles: Features
 
-<h3>:rocket: Home</h3>
+<h3>Home</h3>
 
 - Login / Register
-- Showing movie details, showtime details, watch trailer
-- Showing actors detail
+- Showing movie details, showtime details, actors detail
+- Booking ticket
 - Showing booking history
-- Showing, update user information
+- Showing and update user information
 - Responsive
 
-<h3>:rocket: Admin</h3>
+<h3>Admin</h3>
 
 - Showing list of movies, users
 - CRUD movie, user, showtime movie

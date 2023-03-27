@@ -21,7 +21,26 @@ export const getShowtimeinfo = createAsyncThunk(
   "cinemaSlice/getShowtimeInfo",
   async (data) => {
     const result = await cinemaService.showTimeInfo(data);
-    console.log("🚀 ~ result:", result);
+    return result.data.content;
+  }
+);
+
+export const getMovieShowtime = createAsyncThunk(
+  "cinemaSlice/getMovieShowtime",
+  async (data) => {
+    const result = await cinemaService.movieShowtime(data);
+    return {
+      movieShowtime: result.data.content.thongTinPhim,
+      seat: result.data.content.danhSachGhe,
+      seatIsBooking: [],
+    };
+  }
+);
+
+export const postBookingInfo = createAsyncThunk(
+  "cinemaSlice/postBookingInfo",
+  async (data) => {
+    const result = await cinemaService.movieBooking(data);
     return result.data.content;
   }
 );

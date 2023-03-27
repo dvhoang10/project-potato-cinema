@@ -39,12 +39,4 @@ export const BannerList = [
     trailer: "https://youtu.be/_lvG8xeHu40",
     tagline: "",
   },
-  {
-    id: 5,
-    name: "Soulmate",
-    backdrop: "images/banner/soulmate.jpg",
-    link: "/movie/12050",
-    trailer: "https://youtu.be/_lvG8xeHu40",
-    tagline: "",
-  },
 ];

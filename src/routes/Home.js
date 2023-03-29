@@ -12,6 +12,7 @@ import MovieDetailsPage from "home/movie/MovieDetailsPage";
 import BookingHistoryPage from "home/user/BookingHistoryPage";
 import ProfilePage from "home/user/ProfilePage";
 import BookingPage from "home/booking/BookingPage";
+import NotFoundPage from "home/NotFoundPage";
 
 export default function Home() {
   document.body.style.background = "#191820";
@@ -49,6 +50,7 @@ export default function Home() {
         ></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
+        <Route path="/*" element={<NotFoundPage></NotFoundPage>}></Route>
       </Routes>
     </>
   );

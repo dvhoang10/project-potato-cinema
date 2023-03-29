@@ -1,4 +1,3 @@
-import Dashboard from "admin/dashboard/Dashboard";
 import MovieAddNew from "admin/movies/MovieAddNew";
 import MovieAddShowtime from "admin/movies/MovieAddShowtime";
 import MoviesManagePage from "admin/movies/MovieManagePage";
@@ -6,6 +5,7 @@ import MovieUpdate from "admin/movies/MovieUpdate";
 import UserManagePage from "admin/user/UserManagePage";
 import { ConfigProvider } from "antd";
 import NavbarAdmin from "components/navbar/NavbarAdmin";
+import NotFoundPage from "home/NotFoundPage";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -54,6 +54,7 @@ export default function Admin() {
             path="/user"
             element={<UserManagePage></UserManagePage>}
           ></Route>
+          <Route path="/*" element={<NotFoundPage></NotFoundPage>}></Route>
         </Routes>
       </AdminStyles>
     </ConfigProvider>

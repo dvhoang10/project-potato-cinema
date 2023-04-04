@@ -242,9 +242,9 @@ const PersonDetailsPage = () => {
                 <PersonStyles.Image
                   src={
                     person.profile_path === null && person.gender === 1
-                      ? "images/female"
+                      ? "/images/female.jpg"
                       : person.profile_path === null
-                      ? "images/male"
+                      ? "/images/male.svg"
                       : `${TMDB_IMG_PERSON_URL}${person.profile_path}`
                   }
                   alt={person.name}

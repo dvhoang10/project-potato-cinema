@@ -27,6 +27,7 @@ export const Wrapper = styled.div`
 export const Poster = styled.img`
   width: 94px;
   height: 141px;
+  flex-shrink: 0;
   background-color: var(--color-bg);
   @media (min-width: 1024px) {
     width: 136px;

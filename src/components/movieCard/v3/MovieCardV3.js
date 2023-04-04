@@ -18,7 +18,7 @@ const MovieCardV3 = ({ movie, display }) => {
             src={
               movie.poster_path !== null
                 ? TMDB_IMG_POSTER_URL + movie.poster_path
-                : "images/no-image.svg"
+                : "/images/no-image.svg"
             }
             alt={movie.title}
             loading="lazy"
